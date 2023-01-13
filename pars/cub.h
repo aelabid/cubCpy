@@ -1,0 +1,65 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/25 18:29:08 by mabdelba          #+#    #+#             */
+/*   Updated: 2023/01/12 20:57:01 by aelabid          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef CUB_H
+# define CUB_H
+
+#include <unistd.h>
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <mlx.h>
+#include <fcntl.h>
+#include "libft/libft.h"
+
+typedef	struct textsize
+{
+	int	textlines;
+	int maplines;
+	int	longest;
+}				s_size;
+
+typedef	struct s_map
+{
+	char	**matrice;
+	int		x;
+	int		y;
+	char	dir;
+}				t_map;
+
+typedef struct s_data
+{
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	char	*f;
+	char	*c;
+}			t_data;
+
+char	*get_next_line(int fd);
+size_t	ft_strlen(const char *s);
+int		ft_schr(const char *s);
+char	*ft_strdup(const char *s1);
+char	*ft_sjoin(char *s1, char *s2);
+void	parsing(int ac, char **av, t_data *data, t_map *map);
+int		ft_spllen(char **spl);
+int		openfile(char *str);
+void	error_function(char *str);
+s_size	ft_textsize(int fd);
+bool	check_extension(char *str, char *ext);
+void	check_map(t_map *map);
+int		convert_color(char *str);
+void	call(int ac, char **av);
+
+#endif

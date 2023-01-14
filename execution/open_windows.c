@@ -6,7 +6,7 @@
 /*   By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 07:14:34 by aelabid           #+#    #+#             */
-/*   Updated: 2023/01/14 08:14:33 by aelabid          ###   ########.fr       */
+/*   Updated: 2023/01/14 11:23:22 by aelabid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	open_window(void)
 {
-	mlx.mlx_ptr = mlx_init();
-	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, win.win_w, win.win_h, "CUB3D");
-	mlx.img = NULL;
+	g_util.mlx.mlx_ptr = mlx_init();
+	g_util.mlx.win_ptr = mlx_new_window(g_util.mlx.mlx_ptr, g_util.win.win_w,
+			g_util.win.win_h, "CUB3D");
+	g_util.mlx.img = NULL;
 }

@@ -6,7 +6,7 @@
 #    By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 07:22:21 by aelabid           #+#    #+#              #
-#    Updated: 2023/01/13 01:19:12 by aelabid          ###   ########.fr        #
+#    Updated: 2023/01/14 10:13:07 by aelabid          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ SRC = execution/check_wall.c execution/color_background.c execution/cub3d.c\
 		execution/dda.c execution/get_texture_image.c execution/handle_key.c\
 		execution/init_player.c execution/init.c execution/my_mlx_put.c\
 		execution/open_windows.c execution/rays.c execution/render_image.c\
-		execution/render_recs.c execution/sizes.c\
+		execution/render_recs.c execution/sizes.c execution/rays_util.c \
+		execution/rays_util2.c\
 		pars/main.c pars/get_next_line.c pars/get_next_line_utils.c pars/parsing.c pars/parsing_utils.c \
 		pars/check_map.c pars/convert_color.c
 
@@ -31,7 +32,7 @@ LIBFT = pars/libft/libft.a
 all : $(LIBFT) $(NAME)
 
 
-%.o: %.c pars/cub.h pars/libft/libft.h
+%.o: %.c pars/cub.h pars/libft/libft.h includes/cub3d.h
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 	
 $(NAME) : $(OBJ)

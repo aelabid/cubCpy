@@ -6,7 +6,7 @@
 /*   By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 15:53:09 by aelabid           #+#    #+#             */
-/*   Updated: 2023/01/14 08:10:44 by aelabid          ###   ########.fr       */
+/*   Updated: 2023/01/14 11:22:53 by aelabid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,25 @@
 void	get_angle(t_map *map)
 {
 	if (map->dir == 'S')
-		p.rotate_angle = (M_PI / 2);
+		g_util.p.rotate_angle = (M_PI / 2);
 	else if (map->dir == 'N')
-		p.rotate_angle = 3 * (M_PI / 2);
+		g_util.p.rotate_angle = 3 * (M_PI / 2);
 	else if (map->dir == 'E')
-		p.rotate_angle = 2 * M_PI;
+		g_util.p.rotate_angle = 2 * M_PI;
 	else if (map->dir == 'W')
-		p.rotate_angle = M_PI;
+		g_util.p.rotate_angle = M_PI;
 }
 
 void	init_player(t_map *map)
 {
-	p.x = (map->x * 32);
-	p.y = (map->y * 32);
-	p.turn_dir = 0;
-	p.walk_dir = 0;
+	g_util.p.x = (map->x * 32);
+	g_util.p.y = (map->y * 32);
+	g_util.p.turn_dir = 0;
+	g_util.p.walk_dir = 0;
 	get_angle(map);
-	p.move_speed = 2;
-	p.rotat_speed = 5 * (M_PI / 180);
-	p.size = 11;
+	g_util.p.move_speed = 2;
+	g_util.p.rotat_speed = 5 * (M_PI / 180);
+	g_util.p.size = 11;
 }
 
 void	move_player(void)
@@ -42,13 +42,13 @@ void	move_player(void)
 	double	tempx;
 	double	tempy;
 
-	steps = p.walk_dir * p.move_speed;
-	tempx = p.x + cos(p.rotate_angle) * steps;
-	tempy = p.y + sin(p.rotate_angle) * steps;
+	steps = g_util.p.walk_dir * g_util.p.move_speed;
+	tempx = g_util.p.x + cos(g_util.p.rotate_angle) * steps;
+	tempy = g_util.p.y + sin(g_util.p.rotate_angle) * steps;
 	if (!is_wall(tempx, tempy))
 	{
-		p.x = tempx;
-		p.y = tempy;
+		g_util.p.x = tempx;
+		g_util.p.y = tempy;
 	}
 }
 
@@ -58,13 +58,13 @@ void	move_sides(void)
 	double	tempx;
 	double	tempy;
 
-	steps = p.walk_dir * p.move_speed;
-	tempx = p.x + cos(p.rotate_angle - (M_PI / 2)) * steps ;
-	tempy = p.y + sin(p.rotate_angle - (M_PI / 2)) * steps ;
+	steps = g_util.p.walk_dir * g_util.p.move_speed;
+	tempx = g_util.p.x + cos(g_util.p.rotate_angle - (M_PI / 2)) * steps ;
+	tempy = g_util.p.y + sin(g_util.p.rotate_angle - (M_PI / 2)) * steps ;
 	if (!is_wall(tempx, tempy))
 	{
-		p.x = tempx;
-		p.y = tempy;
+		g_util.p.x = tempx;
+		g_util.p.y = tempy;
 	}
 }
 

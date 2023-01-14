@@ -6,7 +6,7 @@
 /*   By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 18:33:24 by aelabid           #+#    #+#             */
-/*   Updated: 2023/01/14 10:07:20 by aelabid          ###   ########.fr       */
+/*   Updated: 2023/01/14 11:28:08 by aelabid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	init_ray(double ray_angle)
 {
 	if ((ray_angle < 2 * M_PI) && (ray_angle > M_PI))
-		ray.isUp = 1;
+		g_util.ray.is_up = 1;
 	else
-		ray.isUp = 0;
+		g_util.ray.is_up = 0;
 	if ((ray_angle < M_PI / 2) || (ray_angle > 3 * (M_PI / 2)))
-		ray.isRight = 1;
+		g_util.ray.is_right = 1;
 	else
-		ray.isRight = 0;
+		g_util.ray.is_right = 0;
 }
 
 double	norm_angle(double angle)
@@ -35,42 +35,42 @@ double	norm_angle(double angle)
 
 void	get_first_intersection_h(double ray_angle)
 {
-	util.first_intersection.y = floor(p.y / REC_SIZE) * REC_SIZE;
-	if (!ray.isUp)
-		util.first_intersection.y += REC_SIZE;
-	util.first_intersection.x = p.x
-		+ (util.first_intersection.y - p.y) / tan(ray_angle);
+	g_util.first_intersection.y = floor(g_util.p.y / REC_SIZE) * REC_SIZE;
+	if (!g_util.ray.is_up)
+		g_util.first_intersection.y += REC_SIZE;
+	g_util.first_intersection.x = g_util.p.x
+		+ (g_util.first_intersection.y - g_util.p.y) / tan(ray_angle);
 }
 
 void	init_step_h(double ray_angle)
 {
-	util.step.y = REC_SIZE;
-	if (ray.isUp)
-		util.step.y *= -1;
-	util.step.x = REC_SIZE / tan(ray_angle);
-	if (!ray.isRight && util.step.x > 0)
-		util.step.x *= -1;
-	if (ray.isRight && util.step.x < 0)
-		util.step.x *= -1;
+	g_util.step.y = REC_SIZE;
+	if (g_util.ray.is_up)
+		g_util.step.y *= -1;
+	g_util.step.x = REC_SIZE / tan(ray_angle);
+	if (!g_util.ray.is_right && g_util.step.x > 0)
+		g_util.step.x *= -1;
+	if (g_util.ray.is_right && g_util.step.x < 0)
+		g_util.step.x *= -1;
 }
 
 void	horiz_check(double ray_angle)
 {
 	get_first_intersection_h(ray_angle);
 	init_step_h(ray_angle);
-	util.wallH.x = util.first_intersection.x;
-	util.wallH.y = util.first_intersection.y;
-	if (ray.isUp)
-		util.wallH.y--;
-	while (util.wallH.x <= win.win_w && util.wallH.x >= 0
-		&& util.wallH.y <= win.win_h && util.wallH.y >= 0)
+	g_util.wall_h.x = g_util.first_intersection.x;
+	g_util.wall_h.y = g_util.first_intersection.y;
+	if (g_util.ray.is_up)
+		g_util.wall_h.y--;
+	while (g_util.wall_h.x <= g_util.win.win_w && g_util.wall_h.x >= 0
+		&& g_util.wall_h.y <= g_util.win.win_h && g_util.wall_h.y >= 0)
 	{
-		if (is_wall(util.wallH.x, util.wallH.y))
+		if (is_wall(g_util.wall_h.x, g_util.wall_h.y))
 			break ;
 		else
 		{
-			util.wallH.x += util.step.x;
-			util.wallH.y += util.step.y;
+			g_util.wall_h.x += g_util.step.x;
+			g_util.wall_h.y += g_util.step.y;
 		}
 	}
 }

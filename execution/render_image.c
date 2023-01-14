@@ -6,7 +6,7 @@
 /*   By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 11:58:21 by aelabid           #+#    #+#             */
-/*   Updated: 2023/01/14 11:24:38 by aelabid          ###   ########.fr       */
+/*   Updated: 2023/01/14 11:33:13 by aelabid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	render_image(t_data data)
 	}
 	g_util.mlx.img = mlx_new_image(g_util.mlx.mlx_ptr, g_util.win.win_w,
 			g_util.win.win_h);
-	g_util.img.addr = mlx_get_data_addr(g_util.mlx.img, &g_util.img.bits_per_pixel,
+	g_util.img.addr = mlx_get_data_addr(g_util.mlx.img,
+			&g_util.img.bits_per_pixel,
 			&g_util.img.line_length, &g_util.img.endian);
 	color_background(data);
 	render_player(data);

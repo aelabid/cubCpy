@@ -1,18 +1,18 @@
-// /* ************************************************************************** */
-// /*                                                                            */
-// /*                                                        :::      ::::::::   */
-// /*   cub3d.c                                            :+:      :+:    :+:   */
-// /*                                                    +:+ +:+         +:+     */
-// /*   By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+        */
-// /*                                                +#+#+#+#+#+   +#+           */
-// /*   Created: 2022/12/16 07:20:05 by aelabid           #+#    #+#             */
-// /*   Updated: 2022/12/18 08:58:35 by aelabid          ###   ########.fr       */
-// /*                                                                            */
-// /* ************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/16 07:20:05 by aelabid           #+#    #+#             */
+/*   Updated: 2023/01/14 07:36:17 by aelabid          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include"../includes/cub3d.h"
 
-int	key_rel(int key)
+int	release_key(int key)
 {
 	if (key == 13)
 		key_press.w = 0;
@@ -30,7 +30,8 @@ int	key_rel(int key)
 		exit(0);
 	return (0);
 }
-int	register_keys(int key)
+
+int	press_key(int key)
 {
 	if (key == 13)
 		key_press.w = 1;
@@ -55,26 +56,24 @@ int	quit(void)
 
 void	check_texdata(t_data *data)
 {
-	if(!data->no || !data->so || !data->we || 
-				!data->ea || !data->f || !data->c)
+	if (!data->no || !data->so || !data->we
+		|| !data->ea || !data->f || !data->c)
 		error_function("Incomplet Map");
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_data data;
+	t_data	data;
 	t_map	map;
 
 	parsing(ac, av, &data, &map);
 	check_texdata(&data);
-
 	get_sizes(&map);
 	init_info();
-
 	open_window();
 	init_player(&map);
-	mlx_hook(mlx.win_ptr, 2, 0, register_keys, NULL);
-	mlx_hook(mlx.win_ptr, 3, 0, key_rel, NULL);
+	mlx_hook(mlx.win_ptr, 2, 0, press_key, NULL);
+	mlx_hook(mlx.win_ptr, 3, 0, release_key, NULL);
 	mlx_hook(mlx.win_ptr, 17, 0, quit, NULL);
 	mlx_loop_hook(mlx.mlx_ptr, handle_keypress, &data);
 	mlx_loop(mlx.mlx_ptr);

@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mabdelba <mabdelba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 23:29:06 by mabdelba          #+#    #+#             */
-/*   Updated: 2023/01/12 23:26:01 by aelabid          ###   ########.fr       */
+/*   Updated: 2023/01/14 21:03:01 by mabdelba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int ft_spllen(char **spl)
+int	ft_spllen(char **spl)
 {
 	int	i;
 
 	i = 0;
-	while(spl[i])
+	while (spl[i])
 		i++;
 	return (i);
 }
@@ -29,43 +29,42 @@ bool	check_extension(char *str, char *ext)
 
 	i = 0;
 	j = ft_strlen(str) - 4;
-	if(str[j] != '.')
-		return	(false);
+	if (str[j] != '.')
+		return (false);
 	j++;
 	while (ext[i])
 	{
-		if(ext[i] != str[j])
+		if (ext[i] != str[j])
 			return (false);
 		i++;
 		j++;
 	}
-	return (true);	
+	return (true);
 }
-
 
 bool	digit_string(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if(str[i] != ' ' && str[i] != '\t' && str[i] != '0' && str[i] != '1'
+		if (str[i] != ' ' && str[i] != '\t' && str[i] != '0' && str[i] != '1'
 			&& str[i] != '\n' && str[i] != 'E' && str[i] != 'W'
 			&& str[i] != 'N' && str[i] != 'S')
 			return (false);
 		i++;
 	}
-	if(ft_strchr(str, '0') != 0 || ft_strchr(str, '1') != 0)
+	if (ft_strchr(str, '0') != 0 || ft_strchr(str, '1') != 0)
 		return (true);
 	else
 		return (false);
 }
 
-s_size	ft_textsize(int fd)
+t_size	ft_textsize(int fd)
 {
 	char	*ptr;
-	s_size	size;
+	t_size	size;
 	int		drp;
 
 	ptr = get_next_line(fd);
@@ -75,14 +74,15 @@ s_size	ft_textsize(int fd)
 	drp = 0;
 	while (ptr)
 	{
-		if(digit_string(ptr))
+		if (digit_string(ptr))
 			drp = 1;
-		if(!digit_string(ptr) && drp == 0)
+		if (!digit_string(ptr) && drp == 0)
 			size.textlines++;
-		else if(drp == 1)
+		else if (drp == 1)
 			size.maplines++;
-		if((int)ft_strlen(ptr) > size.longest && drp == 1)
+		if ((int)ft_strlen(ptr) > size.longest && drp == 1)
 			size.longest = ft_strlen(ptr);
+		free(ptr);
 		ptr = get_next_line(fd);
 	}
 	close(fd);

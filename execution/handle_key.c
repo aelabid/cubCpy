@@ -6,13 +6,13 @@
 /*   By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 12:29:05 by aelabid           #+#    #+#             */
-/*   Updated: 2023/01/14 11:22:42 by aelabid          ###   ########.fr       */
+/*   Updated: 2023/01/15 20:03:49 by aelabid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../includes/cub3d.h"
 
-void	check_more_key(t_data data)
+void	check_more_key(void)
 {
 	if (g_util.key_press.right)
 	{
@@ -28,7 +28,7 @@ void	check_more_key(t_data data)
 	}
 }
 
-void	check_key(t_data data)
+void	check_key(void)
 {
 	if (g_util.key_press.w)
 	{
@@ -54,8 +54,8 @@ void	check_key(t_data data)
 
 int	handle_keypress(t_data *data)
 {
-	check_key(*data);
-	check_more_key(*data);
+	check_key();
+	check_more_key();
 	render_image(*data);
 	return (0);
 }

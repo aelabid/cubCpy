@@ -6,7 +6,7 @@
 #    By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 07:22:21 by aelabid           #+#    #+#              #
-#    Updated: 2023/01/14 10:13:07 by aelabid          ###   ########.fr        #
+#    Updated: 2023/01/15 23:00:11 by aelabid          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,15 +16,16 @@ SRC = execution/check_wall.c execution/color_background.c execution/cub3d.c\
 		execution/open_windows.c execution/rays.c execution/render_image.c\
 		execution/render_recs.c execution/sizes.c execution/rays_util.c \
 		execution/rays_util2.c\
-		pars/main.c pars/get_next_line.c pars/get_next_line_utils.c pars/parsing.c pars/parsing_utils.c \
-		pars/check_map.c pars/convert_color.c
+		pars/get_next_line.c pars/get_next_line_utils.c pars/parsing.c pars/parsing_utils.c \
+		pars/check_map.c pars/convert_color.c pars/utils_functions.c pars/check_map_utils.c\
+		pars/parsing_utls.c pars/parsing_uts.c
 
 
 OBJ = $(SRC:.c=.o)
 
 NAME = cub3D
 
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 CC = gcc
 
 LIBFT = pars/libft/libft.a
@@ -51,27 +52,25 @@ fclean : clean
 
 re : fclean all 
 
-# OBJ = $(SRC:.c=.o)
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mabdelba <mabdelba@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/12/16 07:22:21 by aelabid           #+#    #+#              #
+#    Updated: 2023/01/14 22:30:50 by mabdelba         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-# # CC_FLAGS = -Wall -Wextra -Werror
-# CC = cc
+# SRC = execution/check_wall.c execution/color_background.c execution/cub3d.c\
+# 		execution/dda.c execution/get_texture_image.c execution/handle_key.c\
+# 		execution/init_player.c execution/init.c execution/my_mlx_put.c\
+# 		execution/open_windows.c execution/rays.c execution/render_image.c\
+# 		execution/render_recs.c execution/sizes.c\
+# 		pars/get_next_line.c pars/get_next_line_utils.c pars/parsing.c pars/parsing_utils.c \
+# 		pars/check_map.c pars/convert_color.c pars/utils_functions.c pars/check_map_utils.c\
+# 		pars/parsing_utls.c pars/parsing_uts.c
 
-# MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
-# MATH_FLAGS = -lm
 
-# NAME = cub3d
-# all: $(NAME)
-
-# $(NAME): $(OBJ)
-# 	$(CC) $(CC_FLAGS) $(MATH_FLAGS) $(MLX_FLAGS) $(OBJ) -o $@
-	
-# %.o: %.c 
-# 	$(CC) $(CC_FLAGS) -c $< -o $@
-
-# clean:
-# 	rm -rf $(OBJ)
-		
-# fclean: clean
-# 	rm -rf $(NAME)
-
-# re: fclean all

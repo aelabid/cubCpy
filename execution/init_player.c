@@ -6,7 +6,7 @@
 /*   By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 15:53:09 by aelabid           #+#    #+#             */
-/*   Updated: 2023/01/14 11:22:53 by aelabid          ###   ########.fr       */
+/*   Updated: 2023/01/20 19:18:37 by aelabid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ void	get_angle(t_map *map)
 	else if (map->dir == 'N')
 		g_util.p.rotate_angle = 3 * (M_PI / 2);
 	else if (map->dir == 'E')
-		g_util.p.rotate_angle = 2 * M_PI;
-	else if (map->dir == 'W')
 		g_util.p.rotate_angle = M_PI;
+	else if (map->dir == 'W')
+		g_util.p.rotate_angle = 2 * M_PI;
 }
 
 void	init_player(t_map *map)
 {
-	g_util.p.x = (map->x * 32);
-	g_util.p.y = (map->y * 32);
+	g_util.p.x = (map->x * REC_SIZE + 5);
+	g_util.p.y = (map->y * REC_SIZE + 5);
 	g_util.p.turn_dir = 0;
 	g_util.p.walk_dir = 0;
 	get_angle(map);

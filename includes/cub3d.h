@@ -6,7 +6,7 @@
 /*   By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 07:14:53 by aelabid           #+#    #+#             */
-/*   Updated: 2023/01/14 11:30:16 by aelabid          ###   ########.fr       */
+/*   Updated: 2023/01/20 21:24:30 by aelabid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include<stdio.h>
 # include <unistd.h>
 # include <math.h>
-# define REC_SIZE 32
+# define REC_SIZE 16
 
 typedef struct s_mlx
 {
@@ -158,4 +158,5 @@ void	init_ray(double ray_angle);
 void	vertical_check(double ray_angle);
 double	get_distance(double x, double y);
 void	get_wall_util(double distance_h, double distance_v);
+void	init_data(t_data *data);
 #endif

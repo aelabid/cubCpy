@@ -6,7 +6,7 @@
 /*   By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 10:06:30 by aelabid           #+#    #+#             */
-/*   Updated: 2023/01/14 11:28:30 by aelabid          ###   ########.fr       */
+/*   Updated: 2023/01/18 17:39:14 by aelabid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ double	get_distance(double x, double y)
 	double	x0;
 	double	y0;
 
-	x0 = g_util.p.x + g_util.p.size / 2;
-	y0 = g_util.p.y + g_util.p.size / 2;
+	x0 = g_util.p.x;
+	y0 = g_util.p.y;
 	dis = sqrt((x - x0) * (x - x0) + (y - y0) * (y - y0));
 	return (dis);
 }

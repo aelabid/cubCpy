@@ -6,7 +6,7 @@
 #    By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 07:22:21 by aelabid           #+#    #+#              #
-#    Updated: 2023/01/15 23:00:11 by aelabid          ###   ########.fr        #
+#    Updated: 2023/01/18 18:43:07 by aelabid          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC = execution/check_wall.c execution/color_background.c execution/cub3d.c\
 		execution/rays_util2.c\
 		pars/get_next_line.c pars/get_next_line_utils.c pars/parsing.c pars/parsing_utils.c \
 		pars/check_map.c pars/convert_color.c pars/utils_functions.c pars/check_map_utils.c\
-		pars/parsing_utls.c pars/parsing_uts.c
+		pars/parsing_utls.c pars/parsing_uts.c pars/final_pars.c
 
 
 OBJ = $(SRC:.c=.o)

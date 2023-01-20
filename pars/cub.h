@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelba <mabdelba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 18:29:08 by mabdelba          #+#    #+#             */
-/*   Updated: 2023/01/14 23:08:04 by mabdelba         ###   ########.fr       */
+/*   Updated: 2023/01/18 18:47:27 by aelabid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,5 @@ int		openfile(char *str);
 bool	str_direction(char *str);
 bool	str_color(char *str);
 bool	sdigit(char *str);
-
+void	final_pars(t_map *map);
 #endif

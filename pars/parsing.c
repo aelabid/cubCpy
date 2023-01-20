@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelba <mabdelba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 16:43:17 by mabdelba          #+#    #+#             */
-/*   Updated: 2023/01/14 23:18:01 by mabdelba         ###   ########.fr       */
+/*   Updated: 2023/01/20 19:18:59 by aelabid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	parsing(int ac, char **av, t_data *data, t_map *map)
 		error_function("Invalid extension: \".cub\"");
 	check_textures(fd, fd2, data, map);
 	check_map(map);
+	final_pars(map);
 	close(fd);
 	close(fd2);
 }

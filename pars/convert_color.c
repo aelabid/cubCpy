@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_color.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelba <mabdelba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 01:48:01 by mabdelba          #+#    #+#             */
-/*   Updated: 2023/01/14 20:58:13 by mabdelba         ###   ########.fr       */
+/*   Updated: 2023/01/20 21:30:17 by aelabid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,29 +35,29 @@ char	*ret_function(char hexa[], int i)
 
 char	*dec_to_hex(int n)
 {
-	char	hexa[2];
-	int		temp;
+	char	str[2];
+	int		drp;
 	char	*ret;
 	int		i;
 
 	i = 0;
 	while (n != 0)
 	{
-		temp = 0;
-		temp = n % 16;
-		if (temp < 10)
+		drp = 0;
+		drp = n % 16;
+		if (drp < 10)
 		{
-			hexa[i] = temp + 48;
+			str[i] = drp + 48;
 			i++;
 		}
 		else
 		{
-			hexa[i] = temp + 55;
+			str[i] = drp + 55;
 			i++;
 		}
 		n = n / 16;
 	}
-	ret = ret_function(hexa, i);
+	ret = ret_function(str, i);
 	return (ret);
 }
 
@@ -74,26 +74,26 @@ char	*convert_rgb(int r, int g, int b)
 
 int	hex_to_dec(char *str)
 {
-	int	length;
-	int	base;
+	int	len;
+	int	var;
 	int	ret;
 	int	i;
 
-	length = ft_strlen(str);
-	base = 1;
+	len = ft_strlen(str);
+	var = 1;
 	ret = 0;
-	i = length - 1;
+	i = len - 1;
 	while (i >= 0)
 	{
 		if (str[i] >= '0' && str[i] <= '9')
 		{
-			ret += (str[i] - 48) * base;
-			base = base * 16;
+			ret += (str[i] - 48) * var;
+			var = var * 16;
 		}
 		else if (str[i] >= 'A' && str[i] <= 'F')
 		{
-			ret += (str[i] - 55) * base;
-			base = base * 16;
+			ret += (str[i] - 55) * var;
+			var = var * 16;
 		}
 		i--;
 	}

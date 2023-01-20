@@ -6,7 +6,7 @@
 /*   By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 10:10:47 by aelabid           #+#    #+#             */
-/*   Updated: 2023/01/14 11:28:39 by aelabid          ###   ########.fr       */
+/*   Updated: 2023/01/18 18:54:04 by aelabid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ t_texture	get_right_wall(double ray_angle)
 	else
 	{
 		if ((ray_angle <= 3 * M_PI / 2 && ray_angle >= M_PI / 2))
-			return (g_util.texture[3]);
-		else
 			return (g_util.texture[2]);
+		else
+			return (g_util.texture[3]);
 	}
 }
 

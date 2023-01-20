@@ -6,7 +6,7 @@
 /*   By: aelabid <aelabid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 07:20:05 by aelabid           #+#    #+#             */
-/*   Updated: 2023/01/14 11:22:18 by aelabid          ###   ########.fr       */
+/*   Updated: 2023/01/20 21:36:50 by aelabid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	press_key(int key)
 int	quit(void)
 {
 	exit(0);
-	return (0);
+	return(0);
 }
 
 void	check_texdata(t_data *data)
@@ -66,6 +66,7 @@ int	main(int ac, char **av)
 	t_data	data;
 	t_map	map;
 
+	init_data(&data);
 	parsing(ac, av, &data, &map);
 	check_texdata(&data);
 	get_sizes(&map);
